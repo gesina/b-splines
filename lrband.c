@@ -1,0 +1,23 @@
+/*
+   'lrband.c' Obfuscated by COBF (Version 1.06 2006-01-07 by BB) at Wed Dec 17 09:47:25 2014
+*/
+#include"lrband.h"
+#define lg int
+#define lp LRBand
+#define lm double
+#define lh for
+#define lo if
+#define lq fabs
+#define lj printf
+#define lk return
+lg lp(lg li,lg lc,lm* *ld){lg lb,le,la,lf;lm ll=1.0e-8;lh(la=0;la<li;
+la++){lo(lq(ld[la][lc])<ll){lj("\n\x44\x61\x73\x20\x44\x69\x61\x67"
+"\x6f\x6e\x61\x6c\x65\x6c\x65\x6d\x65\x6e\x74\x20\x69\x73\x74\x20\x6d"
+"\x69\x74\x20\x25\x32\x30\x2e\x31\x36\x65\x20\x7a\x75\x20\x6b\x6c\x65"
+"\x69\x6e\x2e\n",ld[la][lc]);lj("\n\x44\x65\x72\x20\x25\x32\x64\x2e"
+"\x20\x53\x63\x68\x72\x69\x74\x74\x20\x64\x65\x72\x20\x4c\x52\x2d\x5a"
+"\x65\x72\x6c\x65\x67\x75\x6e\x67\x20\x77\x75\x72\x64\x65\x20\x6e\x69"
+"\x63\x68\x74\x20\x61\x75\x73\x67\x65\x66\x75\x65\x68\x72\x74\x2e\n",
+la+1);lk 1;}lf=fmin(la+lc+1,li);lh(lb=la+1;lb<lf;lb++){ld[lb][la+lc-lb]
+=ld[lb][la+lc-lb]/ld[la][lc];}lh(le=la+1;le<lf;le++){lh(lb=la+1;lb<lf
+;lb++){ld[lb][le+lc-lb]-=ld[lb][la+lc-lb] *ld[la][le+lc-la];}}}lk 0;}
