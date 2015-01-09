@@ -1,9 +1,9 @@
-#ifndef SPLINESEXAMPLE
-#define SPLINESEXAMPLE
+#ifndef SPLINEEXAMPLE
+#define SPLINEEXAMPLE
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: splines_example.h                        */
+/*   FILE: spline_example.h                        */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -34,7 +34,7 @@
       - number of points in [-1,1]
       - array for values in given points to return
 */ 
-double* example(int, double**);
+int example(int, double**);
 
 
 #endif

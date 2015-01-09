@@ -3,7 +3,7 @@
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: splines_evaluation.h                     */
+/*   FILE: splines_eval.h                           */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -36,7 +36,7 @@
       - array with de Boor Points (only {c_{j-3},..., c_j} needed)
       - index of section j
 */
-double evaluation(double, double*, double*, int)
+double evaluation(double, double*, double*, int);
 
 
 #endif

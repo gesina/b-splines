@@ -1,9 +1,7 @@
-#ifndef SPLINEIO
-#define SPLINEIO
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: spline_io.h                              */
+/*   FILE: spline_example.c                        */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -22,51 +20,22 @@
 /* ************************************************ */
 
 
-
 //---------------------------------------------------
 //
-//  Input and output for b-spline evaluation
+//    Example function f(x)=1/(1+25x^2)
 //
 //---------------------------------------------------
 
-#define OUTPUT_FILE "spline_example.dat"
-#define LINE_ENTRY "\n   %16.12f    %16.12f"
 
-// get character from user
+#include "spline_example.h"
+
+// example function f(x)=1/(1+25x^2)
 /*  argument:
-      - instruction string
-      - string with allowed characters
-      - output string for faulty input
-    return:   input integer
+    - number of points in [-1,1]
+    - array for values in given points to return
 */
-char get_char(char*, char*, char*);
 
-  
-// get number of points
-/*  argument:
-      - instruction string
-      - output string for faulty input
-    return:   input integer
-*/
-int get_int(char*, char*);
-
-
-// print line into file
-/*  argument:
-      - x value
-      - f(x) value
-*/
-int print_line(double, double);
-// ERROR CODES:
-//  0: exited normally
-//  3: file handling error
-
-
-// open file
-int init_file();
-// ERROR CODES:
-//  0: exited normally
-//  3: file handling error
-//  4: refused to overwrite
-
-#endif
+int example(int n, double** values)
+{
+return 0;
+}

@@ -32,13 +32,14 @@
 // evaluation of non-zero b-splines in [t_j,t_{j+1})
 /*  argument:  
       - evaluation point x
+      - lattice points x_i
       - interval [t_j, t_{j+1})
       - array where to store the values 
         of the four non-zero b-splines
         N_{j-3,4}, N_{j-2,4}, N_{j-1,4}, N_{j,4}
         in x
 */
-int eval_b_splines(double, int, double*);
+int eval_b_splines(double, int, double*, double*);
 
 // ERROR CODES:
 //  0: exited normally

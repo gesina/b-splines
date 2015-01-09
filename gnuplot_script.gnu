@@ -41,7 +41,7 @@ set key right top
 #               3 gepunktelte Linie
 # linewidth:    Breite der Linie in pt
 # title:        Bezeichner für die Datenreihe in der Legende
-plot "splines_example.dat" with linespoints linetype 1 linewidth 2 title "f(x)=1/(1+25x^2)"
+plot "spline_example.dat" with linespoints linetype 1 linewidth 2 title "f(x)=1/(1+25x^2)"
 
 
 # ----------------------------------------------------------------
@@ -51,7 +51,7 @@ plot "splines_example.dat" with linespoints linetype 1 linewidth 2 title "f(x)=1
 set terminal png size 800, 500
 
 # output file
-set output "splines_example.png"
+set output "spline_example.png"
 
 # actual plot
-plot "splines_example.dat" with linespoints linetype 1 linewidth 2 title "f(x)=1/(1+25x^2)"
+plot "spline_example.dat" with linespoints linetype 1 linewidth 2 title "f(x)=1/(1+25x^2)"

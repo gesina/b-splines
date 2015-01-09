@@ -1,9 +1,7 @@
-#ifndef SPLINEIO
-#define SPLINEIO
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: spline_io.h                              */
+/*   FILE: spline_eval.c                           */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -25,48 +23,26 @@
 
 //---------------------------------------------------
 //
-//  Input and output for b-spline evaluation
+//     Evaluation of B-splines in point x
 //
 //---------------------------------------------------
 
-#define OUTPUT_FILE "spline_example.dat"
-#define LINE_ENTRY "\n   %16.12f    %16.12f"
 
-// get character from user
+#include "spline_eval.h"
+#include "spline_eval_b-splines.h"
+#include "spline_de_boor_points.h"
+
+
+// evaluation of spline in x
 /*  argument:
-      - instruction string
-      - string with allowed characters
-      - output string for faulty input
-    return:   input integer
+      - evaluation point x
+      - lattice (only {x_{j-3},..., x_j} needed)
+      - array with de Boor Points (only {c_{j-3},..., c_j} needed)
+      - index of section j
 */
-char get_char(char*, char*, char*);
-
+double evaluation(double x, double* x_i, double* de_boor, int j)
+{
+  double res=0;
   
-// get number of points
-/*  argument:
-      - instruction string
-      - output string for faulty input
-    return:   input integer
-*/
-int get_int(char*, char*);
-
-
-// print line into file
-/*  argument:
-      - x value
-      - f(x) value
-*/
-int print_line(double, double);
-// ERROR CODES:
-//  0: exited normally
-//  3: file handling error
-
-
-// open file
-int init_file();
-// ERROR CODES:
-//  0: exited normally
-//  3: file handling error
-//  4: refused to overwrite
-
-#endif
+  return res;
+}
