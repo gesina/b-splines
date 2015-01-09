@@ -29,12 +29,18 @@
 //
 //---------------------------------------------------
 
-// example function f(x)=1/(1+25x^2)
+// points of example function f(x)=1/(1+25x^2)
 /*  argument:
       - number of points in [-1,1]
       - array for values in given points to return
 */ 
 int example(int, double**);
+
+
+// function f(x)=1/(1+25x^2)
+//  returns f(x)
+double function(double);
+
 
 
 #endif

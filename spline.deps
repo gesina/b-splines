@@ -1,7 +1,7 @@
 lrband.o: lrband.c lrband.h
 spline_de_boor_points.o: spline_de_boor_points.c spline_de_boor_points.h \
  lrband.h subsband.h spline_eval_b-splines.h
-spline_eval_b-splines.o: spline_eval_b-splines.c
+spline_eval_b-splines.o: spline_eval_b-splines.c spline_eval_b-splines.h
 spline_eval.o: spline_eval.c spline_eval.h spline_eval_b-splines.h \
  spline_de_boor_points.h
 spline_example.o: spline_example.c spline_example.h

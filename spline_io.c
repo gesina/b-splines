@@ -47,9 +47,10 @@ char get_char(char* instruct, char* allowed, char* failure)
   do
     {
       scanf("%c", &c);                          // get user input
-      if ( !strchr(allowed, c)){b=0;}              // ok --> quit
+      if ( strchr(allowed, c)){b=0;}              // ok --> quit
       else if (c=='\n') {b=1;}                    // newline --> again
       else {printf(" %s ", failure);}             // not ok --> warning+repeat
+      
     }
   while(b);
 
@@ -67,7 +68,7 @@ char get_char(char* instruct, char* allowed, char* failure)
 int get_int(char* instruct, char* failure)
 {
   int res = -1;   // value to return
-  _Bool b=1;      // test bool for while-loop
+  _Bool b=0;      // test bool for while-loop
 
   printf(" %s ", instruct);
   do  // as long as input doesn't make sense: repeat
@@ -79,12 +80,13 @@ int get_int(char* instruct, char* failure)
 	  printf(" %s\n", failure);
 	  printf("   Your input: %i\n", res);
 	  printf("Try again:  "); // ... and give some warning
+	  b=1;
 	}
       else {        // ok and wanted --> return
 	printf("You entered %d. Take it?\n", res);
 	if(get_char("Please enter (y)es or (n)o: ", "yn", "Please enter yes (y) or no (n): ")!='y'){
 	  printf("Then try again: ");
-	  b=0;
+	  b=1;
 	}
       }
     }
@@ -137,6 +139,7 @@ int init_file()
 		"yn", "Please enter (y) or (n):") \
        == 'y') // user wants to overwrite?
       {
+	printf("Overwriting file ...\n");
 	// create file
 	file=fopen(OUTPUT_FILE, "w");
 	if(!file){return 3;}

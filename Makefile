@@ -1,5 +1,5 @@
 cc = gcc
-CFLAGS = -Wall -Werror -O2 -std=c99 -lm
+CFLAGS = -Wall -Werror -O2 -std=c99 -lm -g 
 LCFLAGS = $(CFLAGS)
 OCFLAGS = $(CFLAGS) -c
 MAINBIN = spline_approximation
@@ -26,6 +26,7 @@ main: ${OBJECTF}
 
 %.o: %.c %.h
 	$(cc) $(OCFLAGS) -o $*.o $*.c
+ 
 
 
 include $(DEPFILE)

@@ -22,6 +22,7 @@
 
 // LIBRARIES
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "spline_main.h"
 #include "spline_io.h"
@@ -47,18 +48,19 @@ int main(void)
   // get number of points
   int n = get_int("Please enter the number of points within [-1;1]", \
 		  "Please enter an integer number");
-  
 
   // get example function values
   //  first array: evaluation points
   //  second array: values f(x)
-  double* values[2];// = (double**) malloc(2*sizeof(double*));
-  values[0]=(double*) malloc(n*sizeof(double) + 4);   // points x_i + 4 virtual
-  values[1]=(double*) malloc(n*sizeof(double) + 4);   // values f(x_i)
+  double* values[2];
+  values[0]=(double*) malloc((n+4)*sizeof(double));   // points x_i + 4 virtual
+  values[1]=(double*) malloc((n+4)*sizeof(double));   // values f(x_i)
 
   example(n, values);  // lattice points + values + 4 virtual points
 
-  
+  for(int i=0; i<n+4; i++){printf(" %f\t%f\n", values[0][i], values[1][i]);}
+
+    return 0;
   // get spline, characterized with de Boor Points
   double* de_boor_points= (double*) malloc(n*sizeof(double));
   set_de_boor_points(values, n, de_boor_points);
@@ -85,7 +87,6 @@ int main(void)
   // exit
   free(values[0]);
   free(values[1]);
-  //  free(values);
   free(de_boor_points);
 
   
