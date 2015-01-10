@@ -36,22 +36,27 @@
     - number of points in [-1,1]
     - array for values in given points to return
 */
-
 int example(int n, double** values)
 {
-  printf("  %f\n", values[1][0]);
-  
-  for(int i=0; i<n-1; i++)
+  values[0][3]= -1;                      // point x_0=t_1=t_2=t_3=t_4
+  values[1][3]= function(values[0][3]);
+  for(int i=0; i<3; i++)                 // virtual points t_1,...,t_3
     {
-      values[0][i] = i/(double)n - 1;              // points x_i
+      values[0][i]=values[0][3];
+      values[1][i]=values[1][3];
+    }
+  
+  for(int i=3; i<=n+3; i++)
+    {
+      values[0][i] = 2*(i-3)/(double)(n) - 1;  // points x_i
       values[1][i] = function(values[0][i]);
     }
-  values[0][n-1] = 1;                      // point x_{n}
-  values[1][n-1] = function(values[0][n-1]); 
-  for(int i=0; i<4; i++){                  // virtual points x_{n+1},...,x_{n+4}
-    values[0][n+i]=1;
-    values[1][n+i]=values[1][n-1];
-  }
+  
+  for(int i=n+4; i<=n+6; i++)                // virtual points t_{n+5},...,t_{n+7}
+    {
+      values[0][i]=values[0][n+3];
+      values[1][i]=values[1][n+3];
+    }
   
   return 0;
 }

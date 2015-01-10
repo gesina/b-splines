@@ -55,9 +55,8 @@ int set_de_boor_points(double** values, int n, double* de_boor)
     if( !A[i] ){return 1;}
   }
   
-  // copy of function values
-  //  double* f = (double*) malloc(n*sizeof(double));
-  for(int i=0; i<n; i++){ de_boor[i]=values[1][i]; }
+  // copy function values f_i into de_boor
+  for(int i=3; i<=n+3; i++){ de_boor[i-3]=values[1][i]; }
 
   // evaluated in x_j, N_{j,4}=0, so only the last
   // three entries of the return values of eval_b_splines()
@@ -66,10 +65,16 @@ int set_de_boor_points(double** values, int n, double* de_boor)
   // evaluate at x_i and write A
   for(int j=0; j<n; j++)
     {
-      eval_b_splines(values[0][j], j, values[0], temp_N);  // evaluation at x_j
-      A[j][0]=temp_N[1]; A[j][1]=temp_N[2]; A[j][2]=temp_N[3];
+      // evaluation at x_j=t_{j+4} (here: t_{j+3}, since starting with 0)
+      eval_b_splines(values[0][j+3], j+4, values[0], temp_N);
+      
+      A[j][0]=temp_N[0]; A[j][1]=temp_N[1]; A[j][2]=temp_N[2];
     }
+  A[0][2]=A[0][1]; A[0][1]=A[0][0]; A[0][0]=0;
+  A[n-1][0]=A[n-1][1]; A[n-1][1]=A[n-1][2]; A[n-1][2]=0;
+  for(int j=0; j<n; j++) printf("  %f\t%f\t%f\n", A[j][0], A[j][1], A[j][2]);
 
+  
 
   // solve Ac = f and write c into de_boor
   if(LRBand(n, BANDWIDTH, A)){return 2;}
