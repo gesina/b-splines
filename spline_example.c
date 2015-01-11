@@ -38,6 +38,8 @@
 */
 int example(int n, double** values)
 {
+  //n=n+1; // number of Intervalls --> number of points
+  
   values[0][3]= -1;                      // point x_0=t_1=t_2=t_3=t_4
   values[1][3]= function(values[0][3]);
   for(int i=0; i<3; i++)                 // virtual points t_1,...,t_3
@@ -46,7 +48,7 @@ int example(int n, double** values)
       values[1][i]=values[1][3];
     }
   
-  for(int i=3; i<=n+3; i++)
+  for(int i=4; i<=n+3; i++)
     {
       values[0][i] = 2*(i-3)/(double)(n) - 1;  // points x_i
       values[1][i] = function(values[0][i]);

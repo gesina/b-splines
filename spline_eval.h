@@ -29,12 +29,13 @@
 //
 //---------------------------------------------------
 
+
 // evaluation of spline in x
 /*  argument:
       - evaluation point x
       - lattice (only {x_{j-3},..., x_j} needed)
       - array with de Boor Points (only {c_{j-3},..., c_j} needed)
-      - index of section j
+      - index of section j with x in [t_j, t_{j+1}] (beginning with 0)
 */
 double evaluation(double, double*, double*, int);
 

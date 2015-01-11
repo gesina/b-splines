@@ -35,9 +35,9 @@
 
 // de Boor Points
 /*  arguments:
-      - array with lattice points x_i and values f_i
-      - number of lattice points x_i
-      - array for c_i values to return 
+    - array with points t_i and values f_{i-3}
+    - number of lattice points x_i in [-1;1]
+    - array for c_i values to return 
 */
 int set_de_boor_points(double**,int, double*);
 

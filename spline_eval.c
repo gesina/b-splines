@@ -28,6 +28,8 @@
 //---------------------------------------------------
 
 
+#include <stdio.h>
+
 #include "spline_eval.h"
 #include "spline_eval_b-splines.h"
 #include "spline_de_boor_points.h"
@@ -38,11 +40,20 @@
       - evaluation point x
       - lattice (only {x_{j-3},..., x_j} needed)
       - array with de Boor Points (only {c_{j-3},..., c_j} needed)
-      - index of section j
+      - index of section j with x in [t_j, t_{j+1}] (beginning with 0)
 */
-double evaluation(double x, double* x_i, double* de_boor, int j)
+double evaluation(double x, double* points, double* de_boor, int j)
 {
-  double res=0;
+  double temp_N[4] = {0,0,0,0};     // N_{j-3},...,N_{j}
+
+  eval_b_splines(x, j, points, temp_N);
+
+  x=0;
+  for (int i=0; i<4; i++)
+    {    
+      x += de_boor[j-i]*temp_N[3-i];
+    }
   
-  return res;
+  
+  return x;
 }
