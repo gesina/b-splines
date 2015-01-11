@@ -19,5 +19,7 @@ int LRBand(int n,int l,double* *A) {
 				}
 		}
 	}
+	printf("Blubb4");
+	//flush();
 	return 0;
 }
