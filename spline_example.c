@@ -57,7 +57,7 @@ int example(int n, double** values)
       values[0][i]=values[0][n+3];
       values[1][i]=values[1][n+3];
     }
-  
+
   return 0;
 }
 
@@ -66,5 +66,5 @@ int example(int n, double** values)
 //  returns f(x)
 double function(double x)
 {
-  return 1/((double)(1+25*pow(x, 2)));
+  return 1/((double)(1+25*x*x));
 }

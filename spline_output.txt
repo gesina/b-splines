@@ -1,0 +1,31 @@
+
+# ************************************************ #
+#   PROJECT:                                       #
+#   *************                                  #
+#    B-SPLINES                                     #
+#                                                  #
+#   Excercise #55 for the lecture                  #
+#   NUMERICAL MATHEMATICS in 2014/15               #
+#   by Prof. Dr. Blank                             #
+#   University of Regensburg                       #
+#                                                  #
+#   AUTHORS:                                       #
+#   *************                                  #
+#     Kerstin Blomenhofer and Gesina Schwalbe      #
+#     Group 30                                     #
+# ************************************************ #
+
+## Output for n=6
+
+De Boor Points:
+0.038462
+0.064387
+0.116238
+-0.008001
+1.504000
+-0.008001
+0.116238
+0.064387
+0.038462
+
+f(1/3) ~ 0.26470588235   for n=6, 1/3 in [t_7, t_8]
