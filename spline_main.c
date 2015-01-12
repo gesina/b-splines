@@ -1,7 +1,7 @@
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: splines_main.c                           */
+/*   FILE: spline_main.c                           */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -20,16 +20,6 @@
 /* ************************************************ */
 
 
-// LIBRARIES
-#include <stdlib.h>
-#include <stdio.h>
-
-#include "spline_main.h"
-#include "spline_io.h"
-#include "spline_de_boor_points.h"
-#include "spline_eval.h"
-#include "spline_example.h"
-
 //---------------------------------------------------
 //
 //  Main executive file for implementation of
@@ -37,9 +27,18 @@
 //
 //---------------------------------------------------
 
+
+// LIBRARIES
+#include <stdlib.h>   // malloc()
+#include <stdio.h>    // printf()
+
 #include "spline_main.h"
-#include "subsband.h"
-#include "lrband.h"
+#include "spline_io.h"
+#include "spline_de_boor_points.h"
+#include "spline_eval.h"
+#include "spline_example.h"
+
+
 
 // main function
 int main(void)
@@ -62,37 +61,19 @@ int main(void)
 
   example(n, values);  // lattice points + values + 4 virtual points
 
-  //DEBUGGING
-  for(int i=0; i<n+7; i++){printf(" %f\t%f\n", values[0][i], values[1][i]);}
-
-
   // get spline, characterized by the (n+3) de Boor Points
   double* de_boor_points= (double*) malloc((n+3)*sizeof(double));
   set_de_boor_points(values, n+1, de_boor_points);
-  //DEBUGGING
+  // print De Boor Points
+  printf("De Boor Points:\n");
   for(int i=0; i<n+3; i++){printf(" %f\n", de_boor_points[i]);}
-
-  double p=-1/((double)n)-1 , y=0;
-  for (int i=0; i<n; i++)
-    {
-      p += 2/((double)n);
-      y=evaluation(p, values[0], de_boor_points, i+3);
-      printf("f(%f) ~ %f \texact: %f \tfor x in [t_%i, t_%i]\n",
-	     p,		\
-	     y, \
-	     1/(double)(1+25*p*p), \
-	     i+3, i+4);
-      //print_line(p,y);	  
-      
-    }
-
-  //return 0;
-
   
-   printf("f(1/3) ~ %13.11f\n for 1/3 in [t_%i, t_%i]\n",			\
-	 evaluation(1/(double)3 , values[0], de_boor_points, (int) (4*n)/(3*2)+3), \
-	 (int) ((4*n)/(double)(3*2))+3, (int) ((4*n)/(double)(3*2)) +4);
-
+  printf("\nf(1/3) ~ %13.11f   for n=%i, 1/3 in [t_%i, t_%i]\n",	\
+	 evaluation(1/(double)3 , values[0], de_boor_points, (int) (4*n)/(3*2)+3),\
+	 n,								\
+	 (int) ((4*n)/(double)(3*2))+3,					\
+	 (int) ((4*n)/(double)(3*2)) +4);
+  
   
   // write into file
   double x=-1;   // temporal evaluation point

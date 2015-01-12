@@ -1,9 +1,8 @@
 #ifndef SPLINEEXAMPLE
 #define SPLINEEXAMPLE
-
 /* ************************************************ */
 /*                                                  */
-/*   FILE: spline_example.h                        */
+/*   FILE: spline_example.h                         */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -25,15 +24,18 @@
 
 //---------------------------------------------------
 //
-//    Example function f(x)=1/(1+25x^2)
+//    Points and values within [-1;1]
+//      of Example function f(x)=1/(1+25x^2)
 //
 //---------------------------------------------------
 
-// points of example function f(x)=1/(1+25x^2)
+
+
+// example function f(x)=1/(1+25x^2)
 /*  argument:
-      - number of points in [-1,1]
-      - array for values in given points to return
-*/ 
+    - number of intervals in [-1,1]
+    - array to return the points t_i and corresbonding values f_i
+*/
 int example(int, double**);
 
 

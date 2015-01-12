@@ -1,5 +1,46 @@
+
+/* ************************************************ */
+/*                                                  */
+/*   FILE: subsband.c                               */
+/*                                                  */
+/*   PROJECT:                                       */
+/*   *************                                  */
+/*    B-SPLINES                                     */
+/*                                                  */
+/*   Excercise #55 for the lecture                  */
+/*   NUMERICAL MATHEMATICS in 2014/15               */
+/*   by Prof. Dr. Blank                             */
+/*   University of Regensburg                       */
+/*                                                  */
+/*   SOURCE:                                        */
+/*   *************                                  */
+/*     Material for exercise #55 on                 */
+/*     https://elearning.uni-regensburg.de/         */
+/*     course Numerik I, WS14/15                    */
+/*                                                  */
+/* ************************************************ */
+
+
+//---------------------------------------------------
+//
+//  Forward and backward substitution
+//   for band matrices
+//
+//---------------------------------------------------
+
+#include <math.h>
+#include <stdio.h>
+
 #include"subsband.h"
 
+
+// forward substitution, solves Lx=b
+/*  arguments:
+     - dimension (number of rows) n
+     - bandwidth l
+     - matrix L (only elements underneath diagonal used)
+    return: substituted vector in b
+ */
 int vwsubsband(int n, int l, double** L, double* b) {
 	double subs;
 	for(int i=0; i<n; i++) {
@@ -12,6 +53,13 @@ int vwsubsband(int n, int l, double** L, double* b) {
 	return 0;
 }
 
+// backward substitution, solves Rx=b
+/*  arguments:
+     - dimension (number of rows) n
+     - bandwidth l
+     - matrix R (elements underneath diagonal not used)
+    return: resulting vector x in b
+ */
 int rwsubsband(int n, int l, double** R, double* b) {
 	double subs;
 	for(int i=n-1; i>=0; i--) {

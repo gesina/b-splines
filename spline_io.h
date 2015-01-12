@@ -57,10 +57,6 @@ int get_int(char*, char*);
       - f(x) value
 */
 int print_line(double, double);
-// ERROR CODES:
-//  0: exited normally
-//  3: file handling error
-
 
 // open file
 int init_file();
@@ -68,5 +64,6 @@ int init_file();
 //  0: exited normally
 //  3: file handling error
 //  4: refused to overwrite
+
 
 #endif

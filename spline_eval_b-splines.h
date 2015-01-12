@@ -29,20 +29,16 @@
 //
 //---------------------------------------------------
 
-// evaluation of non-zero b-splines in [t_j,t_{j+1})
-/*  argument:  
+
+// evaluation of spline in x
+/*  argument:
       - evaluation point x
-      - interval [t_j, t_{j+1})
-      - lattice points x_i
-      - array where to store the values 
-        of the four non-zero b-splines
-        N_{j-3,4}, N_{j-2,4}, N_{j-1,4}, N_{j,4}
-        in x
+      - lattice points t_i (beginning with 0);
+        only {x_{j-3}=t_{j},..., x_j=t_{j+3}} needed)
+      - array with de Boor Points;
+        only {c_{j-3},..., c_j} needed
+      - index of section j with x in [t_j, t_{j+1}] (beginning with 0)
 */
 int eval_b_splines(double, int, double*, double*);
-
-// ERROR CODES:
-//  0: exited normally
-
 
 #endif

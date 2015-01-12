@@ -3,7 +3,7 @@
 
 /* ************************************************ */
 /*                                                  */
-/*   FILE: splines_main.h                           */
+/*   FILE: spline_main.h                           */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -22,7 +22,6 @@
 /* ************************************************ */
 
 
-
 //---------------------------------------------------
 //
 //  Main executive file for implementation of
@@ -37,6 +36,9 @@ int main(void);
 
 // ERROR CODES:
 //  0: exited normally
-
+//  1: allociation error
+//  2: lu decomposition failed
+//  3: file handling error
+//  4: refused to overwrite
 
 #endif

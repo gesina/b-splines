@@ -1,9 +1,8 @@
 #ifndef SPLINESEVALUATION
 #define SPLINESEVALUATION
-
 /* ************************************************ */
 /*                                                  */
-/*   FILE: splines_eval.h                           */
+/*   FILE: spline_eval.h                            */
 /*                                                  */
 /*   PROJECT:                                       */
 /*   *************                                  */
@@ -33,8 +32,10 @@
 // evaluation of spline in x
 /*  argument:
       - evaluation point x
-      - lattice (only {x_{j-3},..., x_j} needed)
-      - array with de Boor Points (only {c_{j-3},..., c_j} needed)
+      - lattice points t_i (beginning with 0);
+        only {x_{j-3}=t_{j},..., x_j=t_{j+3}} needed)
+      - array with de Boor Points;
+        only {c_{j-3},..., c_j} needed
       - index of section j with x in [t_j, t_{j+1}] (beginning with 0)
 */
 double evaluation(double, double*, double*, int);

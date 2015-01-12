@@ -20,15 +20,15 @@
 /* ************************************************ */
 
 
-
 //---------------------------------------------------
 //
 //  Input and output for b-spline evaluation
 //
 //---------------------------------------------------
 
-#include <stdio.h>
+#include <stdio.h>     // printf(), fprint() ...
 #include <string.h>    // strchr()
+
 #include "spline_io.h"
 
 
@@ -41,16 +41,15 @@
 */
 char get_char(char* instruct, char* allowed, char* failure)
 {
-  _Bool b=1;    // helper bool
+  _Bool b=0;    // helper bool
   char c=' ';
   printf(" %s ", instruct);
   do
     {
       scanf("%c", &c);                          // get user input
-      if ( strchr(allowed, c)){b=0;}              // ok --> quit
+      if ( strchr(allowed, c)){break;}            // ok --> quit
       else if (c=='\n') {b=1;}                    // newline --> again
       else {printf(" %s ", failure);}             // not ok --> warning+repeat
-      
     }
   while(b);
 
@@ -75,23 +74,28 @@ int get_int(char* instruct, char* failure)
     {
       scanf("%d", &res); // user read in
       // verify input
-      if ( res <= 0 )// not ok --> try again
+      if ( res <= 0 )  // not ok --> try again
 	{
 	  printf(" %s\n", failure);
 	  printf("   Your input: %i\n", res);
 	  printf("Try again:  "); // ... and give some warning
 	  b=1;
 	}
-      else {        // ok and wanted --> return
-	printf("You entered %d. Take it?\n", res);
-	if(get_char("Please enter (y)es or (n)o: ", "yn", "Please enter yes (y) or no (n): ")!='y'){
-	  printf("Then try again: ");
-	  b=1;
-	}
+      else             // ok and wanted --> return
+	{
+	  printf("You entered %d. Take it?\n", res);
+	  if( get_char("Please enter (y)es or (n)o: ", \
+		       "yn",                           \
+		       "Please enter yes (y) or no (n): ")!='y')
+	    {
+	      printf("Then try again: ");
+	      b=1;
+	    }
       }
     }
   while(b); 
 
+  
   return res;
 
 }
@@ -134,20 +138,21 @@ int init_file()
       
       printf(" Created file %s\n", OUTPUT_FILE);
     }
-  else{     // if already existing ...
-    if(get_char("\nOverwrite output file OUTPUT_FILE? ((y)es or (n)o)", \
-		"yn", "Please enter (y) or (n):") \
-       == 'y') // user wants to overwrite?
-      {
-	printf("Overwriting file ...\n");
-	// create file
-	file=fopen(OUTPUT_FILE, "w");
-	if(!file){return 3;}
+  else       // if already existing ...
+    {
+      if( get_char("\nOverwrite output file OUTPUT_FILE? ((y)es or (n)o)", \
+		  "yn", "Please enter (y) or (n):")			\
+	 == 'y') // user wants to overwrite?
+	{
+	  printf("Overwriting file ...\n");
+	  // create file
+	  file=fopen(OUTPUT_FILE, "w");
+	  if(!file){return 3;}
+	}
+      else{      // quit if not
+	return 4;
       }
-    else{      // quit if not
-      return 4;
     }
-  }
 
   return 0;
 }

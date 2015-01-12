@@ -1,6 +1,5 @@
 #ifndef SPLINEDEBOORPOINTS
 #define SPLINEDEBOORPOINTS
-
 /* ************************************************ */
 /*                                                  */
 /*   FILE: spline_de_boor_points.h                  */
@@ -33,18 +32,18 @@
 
 #define BANDWIDTH 1
 
-// de Boor Points
+// Computing de Boor Points
 /*  arguments:
     - array with points t_i and values f_{i-3}
-    - number of lattice points x_i in [-1;1]
-    - array for c_i values to return 
+    - number of lattice points x_i in [-1;1] N=n+1
+    - array for de Boor Points c_i values to return
 */
 int set_de_boor_points(double**,int, double*);
 
 // ERROR CODES:
 //  0: exited normally
 //  1: allociation error
-//  2: lr failed
+//  2: LU Decomposition failed
 
 
 #endif
