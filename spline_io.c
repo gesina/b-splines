@@ -46,7 +46,7 @@ char get_char(char* instruct, char* allowed, char* failure)
   printf(" %s ", instruct);
   do
     {
-      scanf("%c", &c);                          // get user input
+      c=getchar();                          // get user input
       if ( strchr(allowed, c)){break;}            // ok --> quit
       else if (c=='\n') {b=1;}                    // newline --> again
       else {printf(" %s ", failure); b=1;}        // not ok --> warning+repeat
@@ -72,6 +72,7 @@ int get_int(char* instruct, char* failure)
   printf(" %s ", instruct);
   do  // as long as input doesn't make sense: repeat
     {
+      while(getchar()!='\n');
       scanf("%d", &res); // user read in
       // verify input
       if ( res <= 0 )  // not ok --> try again
@@ -91,6 +92,7 @@ int get_int(char* instruct, char* failure)
 	      printf("Then try again: ");
 	      b=1;
 	    }
+	  else { b=0; }
       }
     }
   while(b); 
