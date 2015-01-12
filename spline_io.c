@@ -49,7 +49,7 @@ char get_char(char* instruct, char* allowed, char* failure)
       scanf("%c", &c);                          // get user input
       if ( strchr(allowed, c)){break;}            // ok --> quit
       else if (c=='\n') {b=1;}                    // newline --> again
-      else {printf(" %s ", failure);}             // not ok --> warning+repeat
+      else {printf(" %s ", failure); b=1;}        // not ok --> warning+repeat
     }
   while(b);
 

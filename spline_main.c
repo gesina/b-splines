@@ -49,9 +49,9 @@ int main(void)
   
   
   // get number of points
-  int n = get_int("Please enter the number of intervals in [-1;1]", \
-		  "Please enter an integer number");
-
+  unsigned int n = get_int("Please enter the number of intervals in [-1;1]", \
+		  "Please enter an integer number.");
+  
   // get example function values
   //  first array: evaluation points
   //  second array: values f(x)
