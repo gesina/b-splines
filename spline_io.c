@@ -72,18 +72,18 @@ int get_int(char* instruct, char* failure)
   printf(" %s ", instruct);
   do  // as long as input doesn't make sense: repeat
     {
-      while(getchar()!='\n');
+	  //      while(getchar()!='\n');
       scanf("%d", &res); // user read in
       // verify input
-      if ( res <= 0 )  // not ok --> try again
-	{
-	  printf(" %s\n", failure);
-	  printf("   Your input: %i\n", res);
-	  printf("Try again:  "); // ... and give some warning
-	  b=1;
-	}
-      else             // ok and wanted --> return
-	{
+    /*   if ( res <= 0 )  // not ok --> try again */
+	/* { */
+	/*   printf(" %s\n", failure); */
+	/*   printf("   Your input: %i\n", res); */
+	/*   printf("Try again:  "); // ... and give some warning */
+	/*   b=1; */
+	/*}*/
+	  //      else             // ok and wanted --> return
+				//{
 	  printf("You entered %d. Take it?\n", res);
 	  if( get_char("Please enter (y)es or (n)o: ", \
 		       "yn",                           \
@@ -93,7 +93,7 @@ int get_int(char* instruct, char* failure)
 	      b=1;
 	    }
 	  else { b=0; }
-      }
+      //}
     }
   while(b); 
 
